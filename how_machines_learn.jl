@@ -72,7 +72,7 @@ end
 
 # ╔═╡ ad2d284f-c6aa-4f8c-8cb6-aaf73ff8206b
 md"""
-# How do machines learn? And where have all the Ukrianian refugees gone?
+# How do machines learn? And where have all the Ukrainian refugees gone?
 
 Machine learning can sometimes seem mysterious. But like you and I, machines really just learn by trial and error. Let's take a look at some data from the Ukrianian refugee crisis.
 
@@ -110,7 +110,7 @@ md"""
 
 # ╔═╡ f03eeb09-4f57-472a-99ab-e72d171aca8c
 md"""
-We might ask a machine to learn the answer (find the line) from the data. We don't need it to be creative, really. We just tell it to make guesses, and for each guess it makes, we tell it how wrong the guess is compared to the data. The horizontal position of the magenta dot is the guess, and its vertical position is the magnitude of the error. The machine's goal is to make a guess that is the least wrong--- one that brings the dot to the bottom. But it does not know where the bottom is. The whole point of the machine is to find the bottom. It has one more clue (thanks to calculus): information on whether a guess is too high or too low. It is represented here as the line extending from the dot. If the dot is below the line, it means that the guess is too low.
+We might ask a machine to learn the answer (find the line) from the data. We don't need it to be creative, really. We just tell it to make guesses, and for each guess it makes, we tell it how wrong the guess is compared to the data. The horizontal position of the magenta dot is the guess, and its vertical position is the magnitude of the error. The machine's goal is to make a guess that is the least wrong--- one that brings the dot to the bottom. But it does not know where the bottom is. The whole point of the machine is to find the bottom. It has only one clue (thanks to calculus): information on whether a guess is too high or too low. It is represented here as the line extending from the dot. If the dot is below the line, it means that the guess is too low.
 """
 
 # ╔═╡ 2f8c2471-f500-4dde-91e5-944639916706
