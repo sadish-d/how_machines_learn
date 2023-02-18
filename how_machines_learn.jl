@@ -17,11 +17,12 @@ end
 # ╔═╡ 6473873a-8d57-43b4-9a5a-dfb275d39f69
 begin
 
-using CSV, DataFrames, HTTP, Plots, PlutoUI, StatsBase
+using CSV, DataFrames, Plots, PlutoUI, StatsBase # HTTP
 
 # pl_data = HTTP.get("https://raw.githubusercontent.com/sadish-d/how_machines_learn/main/refugee_flows_poland.csv")
 # pl = DataFrame(CSV.File(pl_data.body))
 pl_data = "https://raw.githubusercontent.com/sadish-d/how_machines_learn/main/refugee_flows_poland.csv"
+# pl = HTTP.get(pl_data).body |> CSV.File |> DataFrame
 pl = CSV.read(download(pl_data), DataFrame)
 
 parameter_range = -60:0.001:60
@@ -308,15 +309,13 @@ PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
-HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 
 [compat]
 CSV = "~0.10.9"
-DataFrames = "~1.4.4"
-HTTP = "~1.7.4"
+DataFrames = "~1.5.0"
 Plots = "~1.38.4"
 PlutoUI = "~0.7.49"
 StatsBase = "~0.33.21"
@@ -328,7 +327,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.5"
 manifest_format = "2.0"
-project_hash = "48be042f95ee426db32d2b76d4e2623a0c66a711"
+project_hash = "e8c10414abc5cf0bddcc3c3d4b1e19462b227aaf"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -438,10 +437,10 @@ uuid = "9a962f9c-6df0-11e9-0e5d-c546b8b5ee8a"
 version = "1.14.0"
 
 [[deps.DataFrames]]
-deps = ["Compat", "DataAPI", "Future", "InvertedIndices", "IteratorInterfaceExtensions", "LinearAlgebra", "Markdown", "Missings", "PooledArrays", "PrettyTables", "Printf", "REPL", "Random", "Reexport", "SnoopPrecompile", "SortingAlgorithms", "Statistics", "TableTraits", "Tables", "Unicode"]
-git-tree-sha1 = "d4f69885afa5e6149d0cab3818491565cf41446d"
+deps = ["Compat", "DataAPI", "Future", "InlineStrings", "InvertedIndices", "IteratorInterfaceExtensions", "LinearAlgebra", "Markdown", "Missings", "PooledArrays", "PrettyTables", "Printf", "REPL", "Random", "Reexport", "SentinelArrays", "SnoopPrecompile", "SortingAlgorithms", "Statistics", "TableTraits", "Tables", "Unicode"]
+git-tree-sha1 = "aa51303df86f8626a962fccb878430cdb0a97eee"
 uuid = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
-version = "1.4.4"
+version = "1.5.0"
 
 [[deps.DataStructures]]
 deps = ["Compat", "InteractiveUtils", "OrderedCollections"]
@@ -1397,7 +1396,7 @@ version = "1.4.1+0"
 # ╟─88b931ad-c4a9-4e63-bc77-6adb54100339
 # ╟─6968f389-dd04-4626-bda1-72891a4b00fb
 # ╟─9ea18edd-f67e-4b61-a4b9-785631d76309
-# ╟─6473873a-8d57-43b4-9a5a-dfb275d39f69
+# ╠═6473873a-8d57-43b4-9a5a-dfb275d39f69
 # ╟─c61ffcff-9bf9-4bfc-9613-490072a4344e
 # ╟─22fb3024-6889-4608-a4e7-112a84002f75
 # ╟─00000000-0000-0000-0000-000000000001
