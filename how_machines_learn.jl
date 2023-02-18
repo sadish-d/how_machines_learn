@@ -17,11 +17,12 @@ end
 # ╔═╡ 6473873a-8d57-43b4-9a5a-dfb275d39f69
 begin
 
-using CSV, DataFrames, Plots, PlutoUI, StatsBase
+using CSV, DataFrames, HTTP, Plots, PlutoUI, StatsBase
 
-pl_data = "./refugee_flows_poland.csv"
-pl = DataFrame(CSV.File(pl_data))
-# pl = CSV.read(download("pl_data"), DataFrame)
+# pl_data = HTTP.get("https://raw.githubusercontent.com/sadish-d/how_machines_learn/main/refugee_flows_poland.csv")
+# pl = DataFrame(CSV.File(pl_data.body))
+pl_data = "https://raw.githubusercontent.com/sadish-d/how_machines_learn/main/refugee_flows_poland.csv"
+pl = CSV.read(download(pl_data), DataFrame)
 
 parameter_range = -60:0.001:60
 
@@ -307,6 +308,7 @@ PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
@@ -314,6 +316,7 @@ StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 [compat]
 CSV = "~0.10.9"
 DataFrames = "~1.4.4"
+HTTP = "~1.7.4"
 Plots = "~1.38.4"
 PlutoUI = "~0.7.49"
 StatsBase = "~0.33.21"
@@ -325,7 +328,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.5"
 manifest_format = "2.0"
-project_hash = "64796a9b8a1138da8bda95c1ffa0ab66ebf58c68"
+project_hash = "48be042f95ee426db32d2b76d4e2623a0c66a711"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
