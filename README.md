@@ -1,2 +1,2 @@
-# how_machines_learn
+# how machines learn
 A brief essay on gradient descent using Julia.
