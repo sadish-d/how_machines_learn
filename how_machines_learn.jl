@@ -74,7 +74,7 @@ end
 md"""
 # How do machines learn? And where have all the Ukrainian refugees gone?
 
-Machine learning can sometimes seem mysterious. But like you and I, machines really just learn by trial and error. Let's take a look at some data from the Ukrianian refugee crisis.
+Machine learning can sometimes seem mysterious. But like you and I, machines really just learn by trial and error. Let's take a look at some data from the Ukrainian refugee crisis.
 
 Since the Russian invasion of Ukraine in February 2022, Ukrainian refugees have dispersed to various places within Europe. Here, we will look at [how many have settled in various places within Poland](https://dane.gov.pl/en/dataset/2715/resource/43141/table). We also have data from before the invasion on [how strong each of these places' social ties were with Ukraine based on the number of Facebook connections between them](https://data.humdata.org/dataset/social-connectedness-index). So lets look at these two pieces of information together.
 """
