@@ -233,62 +233,62 @@ end
 
 # ╔═╡ 6203d3c6-353c-4ba2-b439-4f113b6456aa
 begin
-# what a machine sees ----------------------------------------
-machine_guesses = scatter(
-	gd[1][1:guess],
-	gd[2][1:guess],
-	xlims=(minimum(gd[1])-1, maximum(gd[1])+1),
-	ylims=(0, 1.1*maximum(gd[2])),
-	legend=false,
-	# axis=false,
-	# grid=false,
-	background_color=RGB(0.2, 0.2, 0.2),
-	markercolor=RGB(1, 0, 1),
-	markerstrokewidth=0,
-	title="a machine's guesses"
-)
-for i in 1:guess
-	b 			= gd[1][i]
-	loss 		= gd[2][i]
-	loss_rate 	= gd[3][i]
+for guess_anim in 1:30
+	# what a machine sees ----------------------------------------
+	machine_guesses_anim = scatter(
+		gd[1][1:guess_anim],
+		gd[2][1:guess_anim],
+		xlims=(minimum(gd[1])-1, maximum(gd[1])+1),
+		ylims=(0, 1.1*maximum(gd[2])),
+		legend=false,
+		# axis=false,
+		# grid=false,
+		background_color=RGB(0.2, 0.2, 0.2),
+		markercolor=RGB(1, 0, 1),
+		markerstrokewidth=0,
+		title="a machine's guesses"
+	)
+	for i in 1:guess_anim
+		b 			= gd[1][i]
+		loss 		= gd[2][i]
+		loss_rate 	= gd[3][i]
+		plot!(
+			[b, b],
+			[loss, loss-2*loss_rate],
+			color=RGB(1, 0, 1)
+		)
+	end
+	# ------------------------------------------------------------
+	# the data and the guesses -----------------------------------
+	data_plot_anim1 = scatter(
+		pl.lw,
+		pl.pr,
+		background_color=RGB(0.2, 0.2, 0.2),
+		markercolor=RGB(1, 1, 0),
+		markerstrokewidth=0,
+		xlims=(0.98*minimum(pl.lw), 1.02*maximum(pl.lw)),
+		ylims=(0, 1.02*maximum(pl.pr)),
+		title="the data and the guess",
+		ylabel="refugees per 1,000 people",
+		xlabel="log₂ of social connectedness index",
+		label="data"
+		# legend=false,
+		# size=(400, 400)
+	)
 	plot!(
-		[b, b],
-		[loss, loss-2*loss_rate],
-		color=RGB(1, 0, 1)
+		pl.lw,
+		line_gd,
+		color=RGB(0, 0, 1),
+		label="guess"
+	)
+	# ------------------------------------------------------------
+	plot(
+		machine_guesses_anim,
+		data_plot_anim1,
+		size=(800, 400)
 	)
 end
-# ------------------------------------------------------------
-# the data and the guesses -----------------------------------
-data_plot1 = scatter(
-	pl.lw,
-	pl.pr,
-	background_color=RGB(0.2, 0.2, 0.2),
-	markercolor=RGB(1, 1, 0),
-	markerstrokewidth=0,
-	xlims=(0.98*minimum(pl.lw), 1.02*maximum(pl.lw)),
-	ylims=(0, 1.02*maximum(pl.pr)),
-	title="the data and the guess",
-	ylabel="refugees per 1,000 people",
-	xlabel="log₂ of social connectedness index",
-	label="data"
-	# legend=false,
-	# size=(400, 400)
-)
-plot!(
-	pl.lw,
-	line_gd,
-	color=RGB(0, 0, 1),
-	label="guess"
-)
-# ------------------------------------------------------------
-plot(
-	machine_guesses,
-	data_plot1,
-	size=(800, 400)
-)
 end
-
-
 
 # ╔═╡ 88b931ad-c4a9-4e63-bc77-6adb54100339
 if chances<18
@@ -303,6 +303,73 @@ end
 
 # ╔═╡ 22fb3024-6889-4608-a4e7-112a84002f75
 TableOfContents(title="sections", depth=3)
+
+# ╔═╡ 1a5d537a-fcec-4781-953e-3b0428216626
+begin
+# # animation
+# anim = Animation()
+# for guess_anim in 1:30
+# 	line_gd_anim = line_fit(gd[1][guess_anim], pl.lw, pl.pr)
+# 	# what a machine sees ----------------------------------------
+# 	machine_guesses_anim = scatter(
+# 		gd[1][1:guess_anim],
+# 		gd[2][1:guess_anim],
+# 		xlims=(minimum(gd[1])-1, maximum(gd[1])+1),
+# 		ylims=(0, 1.1*maximum(gd[2])),
+# 		legend=false,
+# 		# axis=false,
+# 		# grid=false,
+# 		background_color=RGB(0.2, 0.2, 0.2),
+# 		markercolor=RGB(1, 0, 1),
+# 		markerstrokewidth=0,
+# 		title="a machine's guesses"
+# 	)
+# 	for i in 1:guess_anim
+# 		b 			= gd[1][i]
+# 		loss 		= gd[2][i]
+# 		loss_rate 	= gd[3][i]
+# 		plot!(
+# 			[b, b],
+# 			[loss, loss-2*loss_rate],
+# 			color=RGB(1, 0, 1)
+# 		)
+# 	end
+# 	# ------------------------------------------------------------
+# 	# the data and the guesses -----------------------------------
+# 	data_plot1 = scatter(
+# 		pl.lw,
+# 		pl.pr,
+# 		background_color=RGB(0.2, 0.2, 0.2),
+# 		markercolor=RGB(1, 1, 0),
+# 		markerstrokewidth=0,
+# 		xlims=(0.98*minimum(pl.lw), 1.02*maximum(pl.lw)),
+# 		ylims=(0, 1.02*maximum(pl.pr)),
+# 		title="the data and the guess",
+# 		ylabel="refugees per 1,000 people",
+# 		xlabel="log₂ of social connectedness index",
+# 		label="data"
+# 		# legend=false,
+# 		# size=(400, 400)
+# 	)
+# 	plot!(
+# 		pl.lw,
+# 		line_gd_anim,
+# 		color=RGB(0, 0, 1),
+# 		label="guess"
+# 	)
+# 	# ------------------------------------------------------------
+# 	plt = plot(
+# 		machine_guesses_anim,
+# 		data_plot1,
+# 		size=(800, 400)
+# 	)
+# 	frame(anim, plt)
+# end
+# gif(anim, fps=4)
+md"""
+code for animation
+"""
+end
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1398,6 +1465,7 @@ version = "1.4.1+0"
 # ╟─9ea18edd-f67e-4b61-a4b9-785631d76309
 # ╟─6473873a-8d57-43b4-9a5a-dfb275d39f69
 # ╟─c61ffcff-9bf9-4bfc-9613-490072a4344e
+# ╟─1a5d537a-fcec-4781-953e-3b0428216626
 # ╟─22fb3024-6889-4608-a4e7-112a84002f75
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
