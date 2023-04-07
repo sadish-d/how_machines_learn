@@ -6,5 +6,5 @@ You can download the interactive essay as a [Pluto notebook](https://github.com/
 Here is a preview of a machine learning (guessing) the relationship between Ukraine's social connections with different regions in Poland and how many Ukrainian refugees per capita settle there.
 
 <p align="center">
-  <img src="https://github.com/sadish-d/how_machines_learn/blob/main/machine_guesses_anim.gif?raw=true"/>
+  <img src="https://raw.githubusercontent.com/sadish-d/how_machines_learn/main/machine_guesses_anim.gif"/>
 </p>
